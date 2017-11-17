@@ -3,8 +3,7 @@
    You can use ANY SM5800 series pressure sensor by adjusting the values from line 30 - 35. Just connect pin 2 to GND, pin 7 to 5V, pin 4 to SDA, pin 5 to SCL.
 Pin 1 is labeled on the pin side of the board.
    You can purchase more sensors from Servoflo.com. They carry a variety of all types of sensors (temperature, pressure, humidity, gas, and much more). Please tell them
-"BillyBob sent you". A special thanks to David Ezekiel @ Servoflo for helping me find the best possable sensor for my application.
- 
+"BillyBob sent you". A special thanks to David Ezekiel @ Servoflo for helping me find the best possable sensor for my application. 
 */////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include "Wire.h"
 //DO NOT CHANGE THESE VALUES (THESE ARE THE SENSOR ACCESS ADDRESSES FOR I2C DATA)

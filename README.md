@@ -1,5 +1,8 @@
-# Arduino-SMI-SM5852-SM5812
-I2C communication with the SM58XX series pressure sensor
-https://www.paypal.me/supportMyLaborPlease
-I almost lost my mind trying to figure this out, so please use the link to donate
-Thank you and enjoy!
+# Arduino-SMI-SM5852-SM5812 i2c Communication Example
+I2C communication between Arduino the SM58XX Series of Low Pressure Sensor.
+
+I almost lost my mind trying to figure this out, so please use the link to donate if you feel like sending a beer or bud my way. This software is absolutely free to all! Thank you and enjoy! https://www.paypal.me/supportMyLaborPlease
+
+  This example code is designed to work with the SMI SM52XX Series of low pressure sensors. This example will be turned into a library as well as soon as I fight the laziness. 
+  
+  The code reads the corrected raw pressure value to 12bit precision (3686 steps from 205 to 3891) via i2c. This allows for a precision of just under 1/1000th of an inch of water column for my particular sensor! I detected fast, subtle changes in pressure when opening my room door. It even detected the sudden "syphon effect" as air from the outside rushed in to fill the gap! It then prints all values to the serial monitor. The tricky part was converting the directions in the release notes to Arduino Code. I found this sensor to be extremely accurate, sensitive and repeatable. They're about 30 dollars shipped for singles depending on the model. Your model may differ from mine which is why I left an area at the top of the code to set all the values for your particular sensor (select between a differential sensor and a gauge sensor). Mine is a differential pressure sensor with a measurable range between -1.5in h2o and 1.5in h2o. With the zero reading at 1960 (2023 is a perfectly centered zero reading). The function I use is not vully optimized when it comes to differential sensors. My sensor was slightly off center on the zero reading, which is ok. If you look at the raw sensor reading: actual measurement ratio graph, you'll see a slight "dog leg" in the data if you look very closely. What i want is a continuous smooth function to account for the slight "zero shift". You'll likely never have to worry about that, but I digress. If you have a suggestion for how I should scale my readings with an off-center zero, then please post it here. Greater repeatability can be achieved if you include all the supporting electronic components that SMi recommends. 

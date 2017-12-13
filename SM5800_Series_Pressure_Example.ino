@@ -74,7 +74,7 @@ void loop()
     Serial.println("I2C transaction error");
   }
   // Build the raw pressure from the two bytes received according to the release notes
-  pressRaw = ((dataMSB << 8)|(dataLSB << 2)) >> 2;
+  pressRaw = ((pressMSB << 8)|(pressLSB << 2)) >> 2;
 
 
 

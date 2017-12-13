@@ -73,12 +73,8 @@ void loop()
       Wire.read();
     Serial.println("I2C transaction error");
   }
-
-
-  pressRaw = pressMSB << 8;                   // Bit manipulation to move the data to correct positions
-  pressLSB = pressLSB << 2;
-  pressRaw = pressRaw | pressLSB;
-  pressRaw = pressRaw >> 2;
+  // Build the raw pressure from the two bytes received according to the release notes
+  pressRaw = ((dataMSB << 8)|(dataLSB << 2)) >> 2;
 
 
 
@@ -115,14 +111,11 @@ void loop()
     Serial.println("I2C transaction error");
   }
 
-  tempRaw = tempMSB << 8;                   // Bit manipulation to move the relevant data to correct positions
-  tempLSB = tempLSB << 2;
-  tempRaw = tempRaw | tempLSB;
-  tempRaw = tempRaw >> 2;
-  temperature = mapfloat(tempRaw, 2770, 2100, 15, 75);
+ tempRaw = ((tempMSB << 8)|(tempLSB << 2)) >> 2 // Bit manipulation to move the data bytes to their correct positions.
+ temperature = mapfloat(tempRaw, 2770, 2100, 15, 75);
 
 
-// PARSE THE DATA INTO SOMETHING MEANINGFUL
+// PARSE THE DATA INTO SOMETHING MEANINGFUL (according to the user input for the sensor type)
   if (SENSOR_TYPE == "GAUGE") {
     pressure = mapfloat(pressRaw, SENSOR_ZERO_READING, 3891, 0.0, SENSOR_MAXIMUM);
   }
